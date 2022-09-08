@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BS 6th Semester/MC/QuranWithTranslation/app/src/main/res/layout/activity_ayah_view.xml" value="0.1" />
         <entry key="..\:/BS 6th Semester/MC/QuranWithTranslation/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/BS 6th Semester/MC/QuranWithTranslation/app/src/main/res/layout/ayahview.xml" value="0.17552083333333332" />
+        <entry key="..\:/BS 6th Semester/MC/QuranWithTranslation/app/src/main/res/layout/itemview.xml" value="0.17552083333333332" />
+        <entry key="..\:/BS 6th Semester/MC/QuranWithTranslation/app/src/main/res/layout/surahview.xml" value="0.17447916666666666" />
         <entry key="..\:/BS 6th Semester/MC/QuranWithTranslation/app/src/main/res/menu/navigation_menu.xml" value="0.16145833333333334" />
       </map>
     </option>

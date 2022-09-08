@@ -1,7 +1,5 @@
 package com.example.quranwithtranslation;
 
-import androidx.annotation.NonNull;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,13 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements iRecyclerListener {
-
+public class ayahView extends AppCompatActivity {
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     RecyclerView recyclerView;
@@ -25,10 +20,10 @@ public class MainActivity extends AppCompatActivity implements iRecyclerListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_ayah_view);
         // drawer layout instance to toggle the menu icon to open
         // drawer and back button to close drawer
-        drawerLayout = findViewById(R.id.my_drawer_layout);
+        drawerLayout = findViewById(R.id.my_drawer_layout1);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
 
         // pass the Open and Close toggle for the drawer layout listener
@@ -38,44 +33,25 @@ public class MainActivity extends AppCompatActivity implements iRecyclerListener
 
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        DBhelper db = new DBhelper(MainActivity.this);
-        List<Surah> sList = db.getAllSurah();
 
-        recyclerView = findViewById(R.id.recylerViewStudent);
+        Intent intent = getIntent();
+
+        DBhelper db = new DBhelper(ayahView.this);
+        List<Ayah> aList = db.getSurahAyat(intent.getIntExtra("surahId",0));
+
+        recyclerView = findViewById(R.id.recylerViewAyat);
 
 
         recyclerView.setHasFixedSize(true);
 
         //LinearLayoutManager GridLayoutManager
         // layoutManager = new LinearLayoutManager(MainActivity.this);
-        layoutManager = new LinearLayoutManager(MainActivity.this,
+        layoutManager = new LinearLayoutManager(ayahView.this,
                 LinearLayoutManager.VERTICAL,
                 false);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new myRecyclerViewAdapter(sList,this) ;
+        adapter = new myAyatRecyclerViewAdapter(aList) ;
         recyclerView.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
-    }
-
-    // override the onOptionsItemSelected()
-    // function to implement
-    // the item click listener callback
-    // to open and close the navigation
-    // drawer when the icon is clicked
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onitenmClicked(Surah surah) {
-        Intent intent = new Intent(MainActivity.this, ayahView.class);
-        intent.putExtra("surahId",surah.surahID);
-        startActivity(intent);
     }
 }

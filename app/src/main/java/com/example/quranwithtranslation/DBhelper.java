@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DBhelper extends SQLiteOpenHelper {
     public DBhelper(@Nullable Context context) {
-        super(context, "QuranDB.db", null, 1);
+        super(context, "QuranDb.db", null, 1);
     }
 
     @Override
@@ -29,26 +29,56 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
 
-    public void getAllStudents() {
+    public ArrayList<Surah> getAllSurah() {
 
-       /* SQLiteDatabase db = this.getReadableDatabase();
+       SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursorCourses = db.rawQuery("SELECT * FROM " + STUDENT_TABLE, null);
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM tsurah", null);
 
-        ArrayList<StudentModel> studentArrayList = new ArrayList<>();
+        ArrayList<Surah> surahArrayList = new ArrayList<>();
 
         // moving our cursor to first position.
         if (cursorCourses.moveToFirst()) {
             do {
 
-                studentArrayList.add(new StudentModel(cursorCourses.getInt(0),cursorCourses.getString(1),
-                        cursorCourses.getInt(2)));
+                surahArrayList.add(new Surah(cursorCourses.getInt(0),
+                        cursorCourses.getString(1),
+                        cursorCourses.getString(2),cursorCourses.getString(3),
+                        cursorCourses.getString(4)));
             } while (cursorCourses.moveToNext());
 
         }
 
         cursorCourses.close();
-        return studentArrayList;*/
+        surahArrayList.remove(surahArrayList.size()-1);
+        return surahArrayList;
+
+    }
+
+    public ArrayList<Ayah> getSurahAyat(int id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM tayah where SuraID = "+ id, null);
+
+        ArrayList<Ayah> AyahArrayList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorCourses.moveToFirst()) {
+            do {
+
+                AyahArrayList.add(new Ayah(cursorCourses.getInt(0),cursorCourses.getInt(1),
+                        cursorCourses.getInt(2),cursorCourses.getString(3),
+                        cursorCourses.getString(4),cursorCourses.getString(5),
+                        cursorCourses.getString(6),cursorCourses.getString(7),
+                        cursorCourses.getInt(8),cursorCourses.getInt(9),
+                        cursorCourses.getInt(10)));
+            } while (cursorCourses.moveToNext());
+
+        }
+
+        cursorCourses.close();
+        return AyahArrayList;
 
     }
 
