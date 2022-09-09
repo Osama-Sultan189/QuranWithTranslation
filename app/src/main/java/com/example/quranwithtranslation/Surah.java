@@ -6,7 +6,7 @@ public class Surah {
     public String surahName;
     public String surahNameArabic;
     public String Nazool;
-    public Surah(int surahID, String surahIntro, String surahName, String surahNameArabic, String nazool) {
+    public Surah(int surahID, String surahIntro, String surahName, String nazool, String surahNameArabic) {
         this.surahID = surahID;
         this.surahIntro = surahIntro;
         this.surahName = surahName;

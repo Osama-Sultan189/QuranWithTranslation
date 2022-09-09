@@ -43,6 +43,7 @@ public class myRecyclerViewAdapter extends RecyclerView.Adapter<myRecyclerViewAd
     public void onBindViewHolder(@NonNull myRecyclerViewAdapter.MyVH holder, int position) {
         holder.data=sList.get(position);
         holder.surahData.setText(holder.data.surahName+"");
+        holder.surahArabic.setText(holder.data.surahNameArabic+"");
         holder.CL.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -61,12 +62,14 @@ public class myRecyclerViewAdapter extends RecyclerView.Adapter<myRecyclerViewAd
 
     public class MyVH extends RecyclerView.ViewHolder {
         TextView surahData;
+        TextView surahArabic;
         ConstraintLayout CL;
         Surah data;
         public MyVH(@NonNull View itemView) {
             super(itemView);
             CL = itemView.findViewById(R.id.cl);
             surahData = itemView.findViewById(R.id.surahname);
+            surahArabic = itemView.findViewById(R.id.surahNameArabic);
         }
     }
 }

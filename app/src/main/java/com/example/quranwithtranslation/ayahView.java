@@ -51,7 +51,7 @@ public class ayahView extends AppCompatActivity {
                 false);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new myAyatRecyclerViewAdapter(aList) ;
+        adapter = new myAyatRecyclerViewAdapter(aList,getApplicationContext()) ;
         recyclerView.setAdapter(adapter);
     }
 }

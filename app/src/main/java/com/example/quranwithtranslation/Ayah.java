@@ -13,6 +13,13 @@ public class Ayah {
     public String transDrMohsin;
     public String transMuftiTaqiUsmani;
 
+    public  Ayah(String ayah,String TU,String MK, String MH, String FM){
+        AyahtextArabic = ayah;
+        this.transFatehMohammad = TU;
+        this.transMehmoodUlHaq = MH;
+        this.transDrMohsin = MK;
+        this.transMuftiTaqiUsmani = TU;
+    }
     public Ayah(int ayahID, int surahID, int ayahNo, String ayahtextArabic, String transFatehMohammad, String transMehmoodUlHaq, String transDrMohsin, String transMuftiTaqiUsmani, int rukuID, int paraRukuID, int paraID) {
         this.ayahID = ayahID;
         this.surahID = surahID;
