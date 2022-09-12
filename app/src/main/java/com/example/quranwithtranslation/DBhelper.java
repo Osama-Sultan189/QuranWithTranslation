@@ -55,11 +55,11 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Ayah> getSurahAyat(int id) {
+    public ArrayList<Ayah> getAyat(int id,String colName) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursorCourses = db.rawQuery("SELECT * FROM tayah where SuraID = "+ id, null);
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM tayah where "+colName+" = "+ id, null);
 
         ArrayList<Ayah> AyahArrayList = new ArrayList<>();
 

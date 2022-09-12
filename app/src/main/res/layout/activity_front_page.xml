@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".FrontPage">
 
+    <Button
+        android:id="@+id/si"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="178dp"
+        android:layout_marginEnd="162dp"
+        android:text="Surah Index"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="160dp"
+        android:text="Para Index"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/si" />
 </androidx.constraintlayout.widget.ConstraintLayout>

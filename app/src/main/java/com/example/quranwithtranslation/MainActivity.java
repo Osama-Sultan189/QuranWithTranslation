@@ -75,7 +75,9 @@ public class MainActivity extends AppCompatActivity implements iRecyclerListener
     @Override
     public void onitenmClicked(Surah surah) {
         Intent intent = new Intent(MainActivity.this, ayahView.class);
-        intent.putExtra("surahId",surah.surahID);
+        intent.putExtra("Id",surah.surahID);
+        intent.putExtra("colname","SuraID");
+        intent.putExtra("act","surahview");
         startActivity(intent);
     }
 }

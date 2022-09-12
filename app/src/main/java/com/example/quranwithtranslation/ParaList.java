@@ -1,5 +1,6 @@
 package com.example.quranwithtranslation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -8,25 +9,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ayahView extends AppCompatActivity {
+public class ParaList extends AppCompatActivity {
+
+    QDH qdh ;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    DBhelper db;
-
-    List<Ayah> aList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ayah_view);
+        setContentView(R.layout.activity_para_list);
         // drawer layout instance to toggle the menu icon to open
         // drawer and back button to close drawer
-        drawerLayout = findViewById(R.id.my_drawer_layout1);
+        drawerLayout = findViewById(R.id.my_drawer_layout2);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
 
         // pass the Open and Close toggle for the drawer layout listener
@@ -36,25 +38,42 @@ public class ayahView extends AppCompatActivity {
 
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        DBhelper db = new DBhelper(ParaList.this);
+        qdh = new QDH();
+        List<String> para = qdh.getParaNames();
 
-        Intent intent = getIntent();
 
-        db = new DBhelper(ayahView.this);
-        aList = db.getAyat(intent.getIntExtra("Id", 0), intent.getStringExtra("colname")+"");
 
-        recyclerView = findViewById(R.id.recylerViewAyat);
+        recyclerView = findViewById(R.id.parahview);
 
 
         recyclerView.setHasFixedSize(true);
 
         //LinearLayoutManager GridLayoutManager
         // layoutManager = new LinearLayoutManager(MainActivity.this);
-        layoutManager = new LinearLayoutManager(ayahView.this,
+        layoutManager = new LinearLayoutManager(ParaList.this,
                 LinearLayoutManager.VERTICAL,
                 false);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new myAyatRecyclerViewAdapter(aList,getApplicationContext()) ;
+        adapter = new paraListAdapter(para,getApplicationContext()) ;
         recyclerView.setAdapter(adapter);
+        //adapter.notifyDataSetChanged();
     }
+
+    // override the onOptionsItemSelected()
+    // function to implement
+    // the item click listener callback
+    // to open and close the navigation
+    // drawer when the icon is clicked
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

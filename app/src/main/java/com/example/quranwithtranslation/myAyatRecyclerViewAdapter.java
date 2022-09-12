@@ -46,8 +46,6 @@ public class myAyatRecyclerViewAdapter extends RecyclerView.Adapter<myAyatRecycl
                         intent.putExtra("ayahTransTU",holder.data.transMuftiTaqiUsmani);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         ayaContext.startActivity(intent);
-
-
                     }
                 }
         );
